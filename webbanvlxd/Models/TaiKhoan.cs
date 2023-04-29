@@ -6,6 +6,8 @@
 
         public string? TenTaiKhoan { get; set; }
 
+        public string? MatKhau { get; set; }
+
         public string? HoTen { get; set; }
 
         public string? SoDienThoai { get;set; }

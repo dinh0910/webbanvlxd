@@ -1,10 +1,12 @@
 ﻿namespace webbanvlxd.Models
 {
-    public class CartItem
+    public class HinhAnh
     {
+        public int HinhAnhID { get; set; }
+
         public int SanPhamID { get; set; }
         public SanPham? SanPham { get; set; }
-        
-        public int SoLuong { get; set; }
+
+        public string? Anh { get; set; }
     }
 }

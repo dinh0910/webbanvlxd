@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Admin Login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/modals/">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/modals.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="modal modal-signin d-block bg-secondary" tabindex="-1" role="dialog" id="modalSignin">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+            <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+                <h1 class="fw-bold mb-0 fs-4 text-uppercase">Đăng nhập tài khoản Admin</h1>
+            </div>
+
+          <div class="modal-body p-5 pt-0">
+            <form class="" action="admin/home/login">
+              <div class="form-floating mb-3">
+                <input type="text" name="TenTaiKhoan" class="form-control rounded-3" id="floatingInput" placeholder="Nhập tên tài khoản">
+                <label for="floatingInput">Tên tài khoản</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" name="MatKhau" class="form-control rounded-3" id="floatingPassword" placeholder="Mật khẩu" required>
+                <label for="floatingPassword">Mật khẩu</label>
+              </div>
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Đăng nhập</button>
+                        <small class="text-muted">&copy; 2023 - DPM195113 - Lê Vĩnh Nghi.</small>
+              <hr class="my-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

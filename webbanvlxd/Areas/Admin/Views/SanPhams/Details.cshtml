@@ -1,0 +1,36 @@
+﻿@model webbanvlxd.Models.SanPham
+
+@{
+    ViewData["Title"] = "Details";
+    var ts = ViewBag.thongso as IQueryable<webbanvlxd.Models.ThongSo>;
+    var ha = ViewBag.hinhanh as IQueryable<webbanvlxd.Models.HinhAnh>;
+}
+
+<h1>Details</h1>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                Danh sách thông số sản phẩm @Model.TenSanPham
+            </div>
+            <div class="card-body">
+                <table class="table">
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <table class="table">
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
