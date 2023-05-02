@@ -69,7 +69,7 @@
                         if (item.SanPhamID == Model.SanPhamID)
                         {
                             <tr>
-                                <td>@item.NoiDungMoTa</td>
+                                <td>@Html.Raw(item.NoiDungMoTa)</td>
                                 <td><a asp-action="DeleteMoTa" asp-route-id="@Model.SanPhamID">Delete</a></td>
                             </tr>
                         }
