@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/webbanvlxd.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">webbanvlxd</a>
+                <a class="navbar-brand" role="button" asp-area="admin" asp-controller="Home" asp-action="Index">webbanvlxd</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,16 +22,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="DatHangs" role="button" asp-action="Index">Đơn đặt hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="DatHangs" asp-action="Index">Đơn đặt hàng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="DanhMucs" asp-action="Index">Danh mục</a>
+                            <a class="nav-link text-dark" asp-controller="DanhMucs" role="button" asp-action="Index">Danh mục</a>
                         </li>
                         <li class="dropdown">
-                            <a class="nav-link text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Quản lý Sản phẩm
                             </a>
                             <ul class="dropdown-menu">
@@ -39,7 +37,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="nav-link text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Quản lý Hệ thống
                             </a>
                             <ul class="dropdown-menu">
@@ -49,7 +47,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="BaoCaos" asp-action="Index">Báo cáo</a>
+                            <a class="nav-link text-dark" role="button" asp-controller="BaoCaos" asp-action="Index">Báo cáo</a>
                         </li>
                     </ul>
                 </div>
@@ -67,6 +65,7 @@
             &copy; 2023 - webbanvlxd - DPM195113 - Lê Vĩnh Nghi
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

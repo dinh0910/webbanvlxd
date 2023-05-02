@@ -1,0 +1,72 @@
+﻿<div class="py-5 bg-light">
+    <div class ="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="..." class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-6 offset-sm-1">
+                <h2 class="fw-bold mt-3">TenSanPham</h2>
+                <dl class="row">
+                    <dt class="col-sm-4">Thương hiệu</dt>
+                    <dd class="col-sm-8"><a href="#">TenThuongHieu</a></dd>
+
+                    <dt class="col-sm-4">Bảo hành</dt>
+                    <dd class="col-sm-8">2 năm</dd>
+
+                    <dt class="col-sm-4">Thời gian giao hàng</dt>
+                    <dd class="col-sm-8">3-4 ngày</dd>
+
+                    <dt class="col-sm-4">Tình trạng</dt>
+                    <dd class="col-sm-8">Còn hàng</dd>
+                </dl>
+                <div class="col-md">
+                    <input type="number" value="1" min="1" class="me-auto" style="width: 50px;" />
+                    <a class="btn btn-outline-secondary" role="button">Thêm vào giỏ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-5">
+            <div class="row">
+                <div class="col-7">
+                    <div class="border shadow-lg rounded">
+                        <div class="p-3">
+                            <h3>Thông số kỹ thuật</h3>
+                            <textarea name="editor1"></textarea>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Demo</th>
+                                    <td>Demo</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('editor1');
+</script>

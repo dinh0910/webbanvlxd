@@ -1,8 +1,40 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<div id="carouselExampleControls" class="container carousel slide pb-3" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/images/banners/slider_2.webp" class="d-block w-100" height="500" />
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center text-uppercase mb-3">
+            Sản phẩm đặc trưng
+        </h3>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <img src="~/images/banners/slider_2.webp" class="w-100" height="200" />
+                        <p class="card-text fw-bold fs-5 mb-0">Gạch lót</p>
+                        <h5 class="text-danger">1,000,000đ</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a role="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-cart-shopping"></i></a>
+                                <a role="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-circle-info"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
