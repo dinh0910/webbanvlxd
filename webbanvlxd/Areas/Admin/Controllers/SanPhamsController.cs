@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using webbanvlxd.Data;
 using webbanvlxd.Models;
@@ -166,6 +167,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
 
             ViewBag.hinhanh = _context.HinhAnh;
             ViewBag.thongso = _context.ThongSo;
+            ViewBag.mota = _context.MoTa;
 
             if (sanPham == null)
             {
@@ -173,6 +175,31 @@ namespace webbanvlxd.Areas.Admin.Controllers
             }
 
             return View(sanPham);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Details(int? id, [Bind("ThongSoID,SanPhamID,NoiDung")] ThongSo thongSo,
+            [Bind("HinhAnhID,SanPhamID,Anh")] HinhAnh hinhAnh, [Bind("MoTaID,SanPhamID,NoiDungMoTa")] MoTa moTa)
+        {
+            if(moTa.NoiDungMoTa != null)
+            {
+                _context.Update(moTa);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Details", "SanPhams", routeValues: new { id });
+        }
+
+        public async Task<IActionResult> DeleteMoTa(int? id)
+        {
+            var tt = await _context.MoTa
+                    .FirstOrDefaultAsync(m => m.SanPhamID == id);
+
+            _context.MoTa.Remove(tt);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "SanPhams", routeValues: new { id });
         }
     }
 }

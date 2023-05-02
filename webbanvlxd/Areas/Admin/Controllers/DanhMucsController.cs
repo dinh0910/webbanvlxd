@@ -49,6 +49,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
         // GET: Admin/DanhMucs/Create
         public IActionResult Create()
         {
+            ViewData["LoaiDanhMucID"] = new SelectList(_context.LoaiDanhMuc, "LoaiDanhMucID", "Ten");
             return View();
         }
 
@@ -65,6 +66,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LoaiDanhMucID"] = new SelectList(_context.LoaiDanhMuc, "LoaiDanhMucID", "Ten", danhMuc.LoaiDanhMucID);
             return View(danhMuc);
         }
 
@@ -81,6 +83,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["LoaiDanhMucID"] = new SelectList(_context.LoaiDanhMuc, "LoaiDanhMucID", "Ten");
             return View(danhMuc);
         }
 
@@ -116,6 +119,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LoaiDanhMucID"] = new SelectList(_context.LoaiDanhMuc, "LoaiDanhMucID", "Ten", danhMuc.LoaiDanhMucID);
             return View(danhMuc);
         }
 

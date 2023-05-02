@@ -33,5 +33,7 @@ namespace webbanvlxd.Data
         public DbSet<webbanvlxd.Models.ThongSo>? ThongSo { get; set; }
 
         public DbSet<webbanvlxd.Models.HinhAnh>? HinhAnh { get; set; }
+
+        public DbSet<webbanvlxd.Models.MoTa>? MoTa { get; set; }
     }
 }
