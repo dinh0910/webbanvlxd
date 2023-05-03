@@ -1,0 +1,57 @@
+﻿@model List<webbanvlxd.Models.CartItem>
+
+@{
+    int total = 0;
+    int amount = 0;
+}
+
+<div class="bg-light py-5">
+    <div class="container">
+        <div class="p-3">
+            <form asp-action ="CreateBill">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="border shadow-lg rounded bg-white">
+                            <div class="p-4">
+                                <div class="mb-3">
+                                    <label for="hoten" class="form-label">Họ tên</label>
+                                    <input type="text" class="form-control" id="hoten" placeholder="Nhập họ và tên của bạn" name="HoTen" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sdt" class="form-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="sdt" placeholder="Nhập số điện thoại của bạn" name="Sdt" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nhập địa chỉ của bạn" name="DiaChi" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 offset-1">
+                        <div class="border shadow-lg rounded bg-white">
+                            <div class="p-4">
+                                <h4 class="text-center text-secondary">Chi tiết đơn hàng</h4>
+                                <div class="d-flex">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="fw-bold">@item.SanPham.TenSanPham</div>
+                                        <div class="ms-5"><span>x</span>@item.SoLuong</div>
+                                        amount = item.SanPham.ThanhTien * item.SoLuong;
+                                        total += amount;
+                                        <div class="ms-auto">@(amount.ToString("n0"))đ</div>
+                                    }
+                                </div>
+                                <hr />
+                                <div><b>Thành tiền: </b><span>@(total.ToString("n0"))đ</span></div>
+                                <div class="d-grid p-3">
+                                    <button type="submit" class="btn btn-outline-secondary text-uppercase">Tiến hành đặt hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

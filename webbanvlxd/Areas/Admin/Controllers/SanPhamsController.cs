@@ -41,10 +41,11 @@ namespace webbanvlxd.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SanPhamID,DanhMucID,ThuongHieuID,TenSanPham,HinhAnh,DonGia,Sale,ThanhTien,SoLuong")] SanPham sanPham)
+        public async Task<IActionResult> Create(IFormFile file, [Bind("SanPhamID,DanhMucID,ThuongHieuID,TenSanPham,HinhAnh,DonGia,Sale,ThanhTien,SoLuong")] SanPham sanPham)
         {
             if (ModelState.IsValid)
             {
+                sanPham.HinhAnh = Upload(file);
                 _context.Add(sanPham);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -77,7 +78,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SanPhamID,DanhMucID,ThuongHieuID,TenSanPham,HinhAnh,DonGia,Sale,ThanhTien,SoLuong")] SanPham sanPham)
+        public async Task<IActionResult> Edit(IFormFile file, int id, [Bind("SanPhamID,DanhMucID,ThuongHieuID,TenSanPham,HinhAnh,DonGia,Sale,ThanhTien,SoLuong")] SanPham sanPham)
         {
             if (id != sanPham.SanPhamID)
             {
@@ -88,6 +89,10 @@ namespace webbanvlxd.Areas.Admin.Controllers
             {
                 try
                 {
+                    if(file != null)
+                    {
+                        sanPham.HinhAnh = Upload(file);
+                    }
                     _context.Update(sanPham);
                     await _context.SaveChangesAsync();
                 }
@@ -179,12 +184,21 @@ namespace webbanvlxd.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Details(int? id, [Bind("ThongSoID,SanPhamID,NoiDung")] ThongSo thongSo,
+        public async Task<IActionResult> Details(IFormFile file, int? id, [Bind("ThongSoID,SanPhamID,NoiDung")] ThongSo thongSo,
             [Bind("HinhAnhID,SanPhamID,Anh")] HinhAnh hinhAnh, [Bind("MoTaID,SanPhamID,NoiDungMoTa")] MoTa moTa)
         {
             if(moTa.NoiDungMoTa != null)
             {
                 _context.Update(moTa);
+                await _context.SaveChangesAsync();
+            } else if (thongSo.NoiDung != null)
+            {
+                _context.Update(thongSo);
+                await _context.SaveChangesAsync();
+            } else
+            {
+                hinhAnh.Anh = Upload(file);
+                _context.Update(hinhAnh);
                 await _context.SaveChangesAsync();
             }
 
@@ -200,6 +214,44 @@ namespace webbanvlxd.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Details", "SanPhams", routeValues: new { id });
+        }
+
+        public async Task<IActionResult> DeleteHinhAnh(int? id)
+        {
+            var tt = await _context.HinhAnh
+                    .FirstOrDefaultAsync(m => m.SanPhamID == id);
+
+            _context.HinhAnh.Remove(tt);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "SanPhams", routeValues: new { id });
+        }
+
+        public async Task<IActionResult> DeleteThongSo(int? id)
+        {
+            var tt = await _context.ThongSo
+                    .FirstOrDefaultAsync(m => m.SanPhamID == id);
+
+            _context.ThongSo.Remove(tt);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "SanPhams", routeValues: new { id });
+        }
+
+        public string Upload(IFormFile file)
+        {
+            string fn = null;
+
+            if (file != null)
+            {
+                fn = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var path = $"wwwroot\\images\\products\\{fn}"; // đường dẫn lưu file
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+            }
+            return fn;
         }
     }
 }

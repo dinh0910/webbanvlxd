@@ -30,6 +30,8 @@ namespace webbanvlxd.Data
 
         public DbSet<webbanvlxd.Models.DatHang>? DatHang { get; set; }
 
+        public DbSet<webbanvlxd.Models.ChiTietDatHang>? ChiTietDatHang { get; set; }
+
         public DbSet<webbanvlxd.Models.ThongSo>? ThongSo { get; set; }
 
         public DbSet<webbanvlxd.Models.HinhAnh>? HinhAnh { get; set; }

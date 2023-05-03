@@ -20,16 +20,22 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="DatHangs" role="button" asp-action="Index">Đơn đặt hàng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="DanhMucs" role="button" asp-action="Index">Danh mục</a>
+                            <a class="nav-link text-dark" asp-controller="DatHangs" role="button" asp-action="Index"><i class="fa-solid fa-money-bill"></i> Đơn đặt hàng</a>
                         </li>
                         <li class="dropdown">
                             <a class="nav-link text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Quản lý Sản phẩm
+                                <i class="fa-solid fa-bars"></i> Quản lý danh mục
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="LoaiDanhMucs" asp-action="Index">Loại danh mục</a></li>
+                                <li><a class="dropdown-item" asp-controller="DanhMucs" asp-action="Index">Danh mục</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-store"></i> Quản lý Sản phẩm
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" asp-controller="ThuongHieus" asp-action="Index">Thương hiệu</a></li>
@@ -38,7 +44,7 @@
                         </li>
                         <li class="dropdown">
                             <a class="nav-link text-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Quản lý Hệ thống
+                                <i class="fa-solid fa-wrench"></i> Quản lý Hệ thống
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" asp-controller="Banners" asp-action="Index">Danh sách Banner</a></li>
@@ -47,7 +53,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" role="button" asp-controller="BaoCaos" asp-action="Index">Báo cáo</a>
+                            <a class="nav-link text-dark" role="button" asp-controller="BaoCaos" asp-action="Index"><i class="fa-solid fa-chart-simple"></i> Báo cáo</a>
                         </li>
                     </ul>
                 </div>
@@ -70,6 +76,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/datatable.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/819401a432.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
