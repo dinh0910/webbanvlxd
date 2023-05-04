@@ -4,10 +4,16 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Sản phẩm</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cập nhật sản phẩm @Model.TenSanPham</li>
+    </ol>
+</nav>
 
-<h4>SanPham</h4>
-<hr />
+<h1>Cập nhật sản phẩm @Model.TenSanPham</h1>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -16,54 +22,46 @@
             <div class="form-group">
                 <label asp-for="DanhMucID" class="control-label"></label>
                 <select asp-for="DanhMucID" class="form-control" asp-items="ViewBag.DanhMucID"></select>
-                <span asp-validation-for="DanhMucID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ThuongHieuID" class="control-label"></label>
                 <select asp-for="ThuongHieuID" class="form-control" asp-items="ViewBag.ThuongHieuID"></select>
-                <span asp-validation-for="ThuongHieuID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TenSanPham" class="control-label"></label>
+                <label asp-for="TenSanPham" class="control-label">Tên sản phẩm</label>
                 <input asp-for="TenSanPham" class="form-control" />
-                <span asp-validation-for="TenSanPham" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HinhAnh" class="control-label"></label>
-                <input asp-for="HinhAnh" class="form-control" />
-                <span asp-validation-for="HinhAnh" class="text-danger"></span>
+                <label asp-for="HinhAnh" class="control-label">Hình ảnh</label>
+                <input name="file" type="file" asp-for="HinhAnh" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="DonGia" class="control-label"></label>
-                <input asp-for="DonGia" class="form-control" />
-                <span asp-validation-for="DonGia" class="text-danger"></span>
+                <label asp-for="DonGia" class="control-label">Đơn giá</label>
+                <input asp-for="DonGia" id="DonGia" class="form-control" oninput="tinhSale();" />
             </div>
             <div class="form-group">
-                <label asp-for="Sale" class="control-label"></label>
-                <input asp-for="Sale" class="form-control" />
-                <span asp-validation-for="Sale" class="text-danger"></span>
+                <label asp-for="Sale" class="control-label">Sale</label>
+                <input asp-for="Sale" id="GiamGia" class="form-control" oninput="tinhSale();" />
             </div>
             <div class="form-group">
-                <label asp-for="ThanhTien" class="control-label"></label>
-                <input asp-for="ThanhTien" class="form-control" />
-                <span asp-validation-for="ThanhTien" class="text-danger"></span>
+                <label class="control-label">Thành tiền</label>
+                <input asp-for="ThanhTien" id="ThanhTien" class="form-control" disabled />
             </div>
             <div class="form-group">
-                <label asp-for="SoLuong" class="control-label"></label>
-                <input asp-for="SoLuong" class="form-control" />
-                <span asp-validation-for="SoLuong" class="text-danger"></span>
+                <label class="control-label">Số lượng</label>
+                <input asp-for="SoLuong" disabled class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Cập nhật" class="btn btn-primary mt-3" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<script>
+    function tinhSale() {
+        var donGia = document.getElementById("DonGia").value;
+        var giamGia = document.getElementById("GiamGia").value;
+        document.getElementById("ThanhTien").value = donGia - (donGia * (giamGia / 100));
+    }
+</script>

@@ -50,8 +50,8 @@ namespace webbanvlxd.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DanhMucID"] = new SelectList(_context.DanhMuc, "DanhMucID", "DanhMucID", sanPham.DanhMucID);
-            ViewData["ThuongHieuID"] = new SelectList(_context.ThuongHieu, "ThuongHieuID", "ThuongHieuID", sanPham.ThuongHieuID);
+            ViewData["DanhMucID"] = new SelectList(_context.DanhMuc, "DanhMucID", "Ten", sanPham.DanhMucID);
+            ViewData["ThuongHieuID"] = new SelectList(_context.ThuongHieu, "ThuongHieuID", "TenThuongHieu", sanPham.ThuongHieuID);
             return View(sanPham);
         }
 
@@ -68,8 +68,8 @@ namespace webbanvlxd.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["DanhMucID"] = new SelectList(_context.DanhMuc, "DanhMucID", "DanhMucID", sanPham.DanhMucID);
-            ViewData["ThuongHieuID"] = new SelectList(_context.ThuongHieu, "ThuongHieuID", "ThuongHieuID", sanPham.ThuongHieuID);
+            ViewData["DanhMucID"] = new SelectList(_context.DanhMuc, "DanhMucID", "Ten", sanPham.DanhMucID);
+            ViewData["ThuongHieuID"] = new SelectList(_context.ThuongHieu, "ThuongHieuID", "TenThuongHieu", sanPham.ThuongHieuID);
             return View(sanPham);
         }
 
@@ -109,8 +109,8 @@ namespace webbanvlxd.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DanhMucID"] = new SelectList(_context.DanhMuc, "DanhMucID", "DanhMucID", sanPham.DanhMucID);
-            ViewData["ThuongHieuID"] = new SelectList(_context.ThuongHieu, "ThuongHieuID", "ThuongHieuID", sanPham.ThuongHieuID);
+            ViewData["DanhMucID"] = new SelectList(_context.DanhMuc, "DanhMucID", "Ten", sanPham.DanhMucID);
+            ViewData["ThuongHieuID"] = new SelectList(_context.ThuongHieu, "ThuongHieuID", "TenThuongHieu", sanPham.ThuongHieuID);
             return View(sanPham);
         }
 

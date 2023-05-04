@@ -1,0 +1,30 @@
+﻿@model webbanvlxd.Models.LoaiDanhMuc
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Loại danh mục</a></li>
+        <li class="breadcrumb-item"><a asp-action="Details" asp-route-id="@Model.LoaiDanhMucID">@Model.Ten</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Thêm danh mục</li>
+    </ol>
+</nav>
+
+<h1>Thêm danh mục của loại @Model.Ten</h1>
+
+<div class="row mt-3">
+    <div class="col-md-4">
+        <form asp-action="CreateCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input hidden asp-for="LoaiDanhMucID" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tên danh mục</label>
+                <input name="Ten" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mt-3" />
+            </div>
+        </form>
+    </div>
+</div>

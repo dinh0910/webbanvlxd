@@ -38,6 +38,8 @@ namespace webbanvlxd.Areas.Admin.Controllers
 
             var loaiDanhMuc = await _context.LoaiDanhMuc
                 .FirstOrDefaultAsync(m => m.LoaiDanhMucID == id);
+            ViewBag.dm = _context.DanhMuc.Include(d => d.LoaiDanhMuc);
+
             if (loaiDanhMuc == null)
             {
                 return NotFound();
@@ -50,6 +52,13 @@ namespace webbanvlxd.Areas.Admin.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        public async Task<IActionResult> CreateCategory(int? id)
+        {
+            var loaiDanhMuc = await _context.LoaiDanhMuc
+                .FirstOrDefaultAsync(m => m.LoaiDanhMucID == id);
+            return View(loaiDanhMuc);
         }
 
         // POST: Admin/LoaiDanhMucs/Create
@@ -66,6 +75,19 @@ namespace webbanvlxd.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(loaiDanhMuc);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCategory(int id, [Bind("DanhMucID,LoaiDanhMucID,Ten")] DanhMuc danhMuc)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(danhMuc);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", "LoaiDanhMucs", routeValues: new { id });
+            }
+            return View(danhMuc);
         }
 
         // GET: Admin/LoaiDanhMucs/Edit/5

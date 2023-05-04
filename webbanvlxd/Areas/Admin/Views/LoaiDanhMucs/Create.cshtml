@@ -4,10 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Loại danh mục</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Thêm loại danh mục</li>
+    </ol>
+</nav>
 
-<h4>LoaiDanhMuc</h4>
-<hr />
+<h1>Thêm loại danh mục @Model.Ten</h1>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -24,10 +30,3 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

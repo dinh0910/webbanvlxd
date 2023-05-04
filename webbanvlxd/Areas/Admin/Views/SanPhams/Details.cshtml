@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col mt-3">
         <div class="card">
             <div class="card-header">
                 Mô tả @Model.TenSanPham
@@ -75,21 +75,13 @@
                         }
                     }
                 </table>
-
-                @foreach (var item in mt)
-                {
-                    if (item.SanPhamID == Model.SanPhamID)
-                    {
-                        <p>@item.NoiDungMoTa</p>
-                    }
-                }
             </div>
         </div>
     </div>
 </div>
 
 <div class="modal fade" id="modalThongTin" tabindex="-1" aria-labelledby="modalThongTinLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="text-center mb-2">

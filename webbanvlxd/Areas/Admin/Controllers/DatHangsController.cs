@@ -38,6 +38,8 @@ namespace webbanvlxd.Areas.Admin.Controllers
 
             var datHang = await _context.DatHang
                 .FirstOrDefaultAsync(m => m.DatHangID == id);
+            ViewBag.ctdh = _context.ChiTietDatHang.Include(c => c.SanPham);
+
             if (datHang == null)
             {
                 return NotFound();

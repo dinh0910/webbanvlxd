@@ -57,10 +57,11 @@ namespace webbanvlxd.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BannerID,Anh")] Banner banner)
+        public async Task<IActionResult> Create(IFormFile file, [Bind("BannerID,Anh,Active")] Banner banner)
         {
             if (ModelState.IsValid)
             {
+                banner.Anh = Upload(file);
                 _context.Add(banner);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -89,7 +90,7 @@ namespace webbanvlxd.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BannerID,Anh")] Banner banner)
+        public async Task<IActionResult> Edit(IFormFile file, int id, [Bind("BannerID,Anh,Active")] Banner banner)
         {
             if (id != banner.BannerID)
             {
@@ -100,6 +101,10 @@ namespace webbanvlxd.Areas.Admin.Controllers
             {
                 try
                 {
+                    if(file != null)
+                    {
+                        banner.Anh = Upload(file);
+                    }
                     _context.Update(banner);
                     await _context.SaveChangesAsync();
                 }

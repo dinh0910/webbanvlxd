@@ -4,16 +4,26 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
+    </ol>
+</nav>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Danh sách thương hiệu</h1>
+
+<div class="my-3">
+    <a class="btn btn-outline-primary" asp-action="Create">
+        <i class="fa-solid fa-plus"></i> Thêm sản phẩm
+    </a>
+</div>
+
 <table class="table" id="myTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TenThuongHieu)
+                Tên thương hiệu
             </th>
             <th></th>
         </tr>
@@ -25,8 +35,7 @@
                 @Html.DisplayFor(modelItem => item.TenThuongHieu)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ThuongHieuID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ThuongHieuID">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.ThuongHieuID">Edit</a>
                 <a asp-action="Delete" asp-route-id="@item.ThuongHieuID">Delete</a>
             </td>
         </tr>

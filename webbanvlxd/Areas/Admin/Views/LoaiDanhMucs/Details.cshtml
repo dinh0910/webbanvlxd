@@ -2,23 +2,49 @@
 
 @{
     ViewData["Title"] = "Details";
+    var dm = ViewBag.dm as IQueryable<webbanvlxd.Models.DanhMuc>;
 }
 
-<h1>Details</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Loại danh mục</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Ten</li>
+    </ol>
+</nav>
 
-<div>
-    <h4>LoaiDanhMuc</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ten)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ten)
-        </dd>
-    </dl>
+<h1>Chi tiết loại danh mục @Model.Ten</h1>
+
+<div class="my-3">
+    <a class="btn btn-outline-primary" asp-controller="LoaiDanhMucs" asp-action="CreateCategory" asp-route-id="@Model.LoaiDanhMucID">
+        <i class="fa-solid fa-plus"></i> Thêm danh mục
+    </a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.LoaiDanhMucID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Danh mục</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in dm)
+        {
+            if(item.LoaiDanhMucID == Model.LoaiDanhMucID)
+            {
+                <tr>
+                    <td>
+                        @item.Ten
+                    </td>
+                    <td>
+                        <form>
+
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
