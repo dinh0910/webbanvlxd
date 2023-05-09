@@ -38,6 +38,17 @@
             </div>
             <div class="card-body">
                 <table class="table">
+                    @foreach(var item in ts)
+                    {
+                        if(item.SanPhamID == Model.SanPhamID)
+                        {
+                            <tr>
+                                <td>@item.TenThongSo</td>
+                                <td>@item.NoiDung</td>
+                                <td><a asp-action="DeleteThongSo" asp-route-id="@Model.SanPhamID">Delete</a></td>
+                            </tr>
+                        }
+                    }
                 </table>
             </div>
         </div>
@@ -49,7 +60,16 @@
             </div>
             <div class="card-body">
                 <table class="table">
-
+                    @foreach (var item in ha)
+                    {
+                        if (item.SanPhamID == Model.SanPhamID)
+                        {
+                            <tr>
+                                <td><img src="~/images/products/@item.Anh" class="img-thumbnail" width="150" height="100" /></td>
+                                <td><a asp-action="DeleteHinhAnh" asp-route-id="@Model.SanPhamID">Delete</a></td>
+                            </tr>
+                        }
+                    }
                 </table>
             </div>
         </div>
@@ -122,11 +142,11 @@
                         <input type="hidden" asp-for="SanPhamID" value="@Model.SanPhamID" />
                         <div class="form-group mb-3">
                             <label class="control-label mb-1">Tên thông số</label>
-                            <input type="text" name="Tenthongso" class="form-control" />
+                            <input type="text" name="TenThongSo" class="form-control" />
                         </div>
                         <div class="form-group mb-3">
                             <label class="control-label mb-1">Nội dung</label>
-                            <input type="text" name="Noidung" class="form-control" />
+                            <input type="text" name="NoiDung" class="form-control" />
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Thêm" class="btn btn-primary" />

@@ -19,7 +19,6 @@ namespace webbanvlxd.Models
         [DisplayFormat(DataFormatString = "{0:#,##0} đ")]
         public int DonGia { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:#,##0} đ")]
         public int Sale { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:#,##0} đ")]
